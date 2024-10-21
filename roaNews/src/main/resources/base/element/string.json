@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "RoaNewsAbility_desc",
+      "value": "Infos from ROA"
+    },
+    {
+      "name": "RoaNewsAbility_label",
+      "value": "Roa Infos"
+    }
+  ]
+}

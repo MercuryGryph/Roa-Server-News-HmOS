@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "RoaNewsAbility_desc",
+      "value": "元点服务器相关信息"
+    },
+    {
+      "name": "RoaNewsAbility_label",
+      "value": "元点资讯"
+    }
+  ]
+}

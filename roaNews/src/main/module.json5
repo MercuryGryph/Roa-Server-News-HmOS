@@ -1,0 +1,37 @@
+{
+  "module": {
+    "name": "roaNews",
+    "type": "entry",
+    "description": "$string:module_desc",
+    "mainElement": "RoaNewsAbility",
+    "deviceTypes": [
+      "phone"
+    ],
+    "deliveryWithInstall": true,
+    "installationFree": false,
+    "pages": "$profile:main_pages",
+    "abilities": [
+      {
+        "launchType": "standard",
+        "name": "RoaNewsAbility",
+        "srcEntry": "./ets/roanewsability/RoaNewsAbility.ets",
+        "description": "$string:RoaNewsAbility_desc",
+        "icon": "$media:layered_image",
+        "label": "$string:RoaNewsAbility_label",
+        "startWindowIcon": "$media:startIcon",
+        "startWindowBackground": "$color:start_window_background",
+        "exported": true,
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
