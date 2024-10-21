@@ -78,9 +78,7 @@ struct Index {
               .backgroundColor($r('sys.color.comp_background_primary'))
               .padding(16)
               .border({
-                // style: BorderStyle.Solid,
                 radius: 16,
-                // color: $r('sys.color.dialog_outer_border_color'),
               })
               .shadow({
                 radius: 24,
