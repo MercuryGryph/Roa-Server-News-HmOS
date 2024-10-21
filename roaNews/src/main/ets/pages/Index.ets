@@ -21,14 +21,17 @@ httpRequest.on('headersReceive', (header) => {
 });
 
 httpRequest.request(
-  '',
+  'https://roa.ruogustudio.net/res/data/news_list.json',
   {
     method: http.RequestMethod.GET,
   },
   (err: BusinessError, data: http.HttpResponse) => {
+    isLoading.set(false)
+    console.log('Get response of news list')
     if (!err) {
+      console.log('Response of news list: ' + JSON.stringify(data.result))
       try {
-        let list: News[] = data.result as News[]
+        let list: News[] = JSON.parse(data.result as string) as News[]
         newsList.set([...list])
       } catch (e) {
         console.error(
@@ -54,12 +57,10 @@ struct Index {
   @LocalStorageProp('isLoading') isLoading: boolean = true
 
   build() {
-    Column({
-      space: 16
-    }) {
-      if (isLoading) {
+    Column() {
+      if (this.isLoading) {
         Text('Loading...')
-      }else if (newsList.get().length === 0) {
+      }else if (this.newsList.length === 0) {
         Text('List is empty!')
       } else {
         List({}) {
@@ -67,13 +68,30 @@ struct Index {
             ListItem() {
               Column() {
                 Text(news.title)
-                  .fontSize(48)
+                  .fontSize(24)
+                  .fontColor($r('sys.color.font_primary'))
                 Text(news.href)
-                  .fontSize(32)
+                  .fontSize(14)
+                  .fontColor($r('sys.color.font_secondary'))
               }
+              .alignItems(HorizontalAlign.Start)
+              .backgroundColor($r('sys.color.comp_background_primary'))
+              .padding(16)
+              .border({
+                // style: BorderStyle.Solid,
+                radius: 16,
+                // color: $r('sys.color.dialog_outer_border_color'),
+              })
+              .shadow({
+                radius: 24,
+                color: $r('sys.color.comp_background_primary'),
+              })
+              .margin(16)
+              .width('70%')
             }
           })
-        }.size({
+        }
+        .size({
           width: '100%',
           height: '100%'
         })
@@ -84,9 +102,8 @@ struct Index {
       width: '100%',
       height: '100%'
     })
+    .backgroundColor($r('sys.color.background_secondary'))
     .alignItems(HorizontalAlign.Center)
     .justifyContent(FlexAlign.Center)
-    .margin(16)
   }
-
 }
